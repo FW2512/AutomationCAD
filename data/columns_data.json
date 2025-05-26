@@ -52,5 +52,23 @@
                 "top": ["T8@150"]
             }
         }
+    },
+    "C4":{
+        "floor1": {
+            "dimensions":{
+                "width_x": 40,
+                "height_y": 25,
+                "cover": 5
+            },
+            "rebars":{
+                "corners": ["T20"],
+                "middle": ["T20"]
+            },
+            "stirrups":{
+                "bottom": ["T8@150"],
+                "middle": ["T8@150"],
+                "top": ["T8@150"]
+            }
+        }
     }
 }
