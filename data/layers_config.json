@@ -1,0 +1,26 @@
+{
+    "beam_outline": {
+        "color": "green",
+        "linetype": "Continuous",
+        "lineweight": 25,
+        "description": "Group: Beam"
+    },
+    "beam_top_rebar": {
+        "color": "red",
+        "linetype": "Continuous",
+        "lineweight": 9,
+        "description": "Group: Beam"
+    },
+    "beam_bottom_rebar": {
+        "color": "yellow",
+        "linetype": "Continuous",
+        "lineweight": 9,
+        "description": "Group: Beam"
+    },
+    "beam_stirrups": {
+        "color": "blue",
+        "linetype": "Continuous",
+        "lineweight": 9,
+        "description": "Group: Beam"
+    }
+}

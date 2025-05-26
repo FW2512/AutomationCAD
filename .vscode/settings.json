@@ -1,0 +1,82 @@
+{
+    "todo-tree.general.tags": [
+    "BUG",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]",
+    "EDITED",
+    "REDUCED",
+    "REPLACE",
+    "TEST",
+    "DEBUG",
+    "MODIFIED",
+    "ERROR",
+    "OPTIMIZE",
+    "GUI_MSG",
+    "NOTE",
+    "GUI_FEATURE"
+  ],
+
+  "todo-tree.highlights.defaultHighlight": {
+    "type": "text",
+    "foreground": "#FF8800",
+  },
+
+  "todo-tree.highlights.customHighlight": {
+
+    "BUG": {
+      "type": "text",
+      "foreground": "#FFFF00",
+      "icon": "bug",
+      "iconColour": "#FFFF00"
+    },
+    "FIXME": {
+      "icon": "flame"
+    },
+    "XXX": {
+      "icon": "x",
+      "iconColour": "#FF0000"
+    },
+    "[ ]": {
+      "icon": "issue-draft"
+    },
+    "[x]": {
+      "icon": "issue-closed"
+    },
+    "GUI_FEATURE": {
+      "type": "text",
+      "foreground": "#00FF00",
+      "icon": "tag"
+    },
+    "GUI_MSG": {
+      "type": "text",
+      "foreground": "#00FF00",
+      "icon": "mail"
+    },
+    "NOTE": {
+      "type": "text",
+      "foreground": "#FF8800",
+      "icon": "note",
+      "iconColour": "#FF8800"
+    },
+    "DEBUG": {
+      "type": "text",
+      "foreground": "#00FF00",
+      "icon": "$(debug)"
+    },
+    "ERROR": {
+      "type": "text",
+      "foreground": "#FF0000",
+      "icon": "x",
+      "iconColour": "#ff0000"
+    },
+    "TEST": {
+      "type": "text",
+      "foreground": "#00FF00",
+      "icon": "beaker",
+      "iconColour": "#00FF00"
+    }
+  }
+}

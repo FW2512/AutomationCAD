@@ -1,0 +1,10 @@
+LINEWIGHT
+-3: Default (0.25mm)
+-2: ByBlock
+-1: ByLayer
+0: 0.00 mm
+5: 0.05 mm
+9: 0.09 mm
+13: 0.13 mm
+15: 0.15 mm
+...
