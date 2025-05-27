@@ -102,15 +102,24 @@ class AutoCADController:
             polyline.Layer = layer
         return polyline
 
-    def add_hatch(self, pattern="SOLID", associative=True):
+    def add_hatch(self,pattern_type=0, pattern_name="SOLID", associative=True):
         """
         Create a new hatch object.
+        
+         - Pattren Types:
+            * 0: Predefined patterns (like "SOLID", "ANSI31", etc.)
+            * 1: User-defined patterns (simple lines)
+            * 2: Custom patterns from a .pat file.
+         - Pattren Names:
+            * You can find it in AutoCAD
+         - Associativity (Associativity=False in AddHatch): If you set Associativity to True, the hatch will remain linked to its boundary, (e.g. If you modify the circle later, the hatch will update automatically). If False, it's a static hatch
 
         Args:
-            pattern (str): Hatch pattern name. Default is "SOLID".
+            pattern_type (int): Hatch pattern type. Default is 0.
+            pattern_name (str): Hatch pattern name. Default is "SOLID".
             associative (bool): Whether the hatch is associative.
 
         Returns:
             COM Hatch object.
         """
-        return self.model_space.AddHatch(0, pattern, associative)
+        return self.model_space.AddHatch(pattern_type, pattern_name, associative)
