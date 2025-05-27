@@ -5,3 +5,4 @@ TODO: For errors reduction, must code file checker function to check  for the ne
 TODO: Handel the error when no AutoCAD task found (run the program while AutoCAD not running)
 TODO: For layers name must be an assignment entries (What if the user want to change the layer name?), the layer name must not be hard coded you can add an assignment entries in the layers_config.json file
 TODO: Do somtheing for units
+TODO: Add project name entry in json file so we don't draw on any open AutoCAD document
