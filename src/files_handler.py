@@ -22,4 +22,5 @@ def load_json(path: str) -> dict:
 layers_config = load_json(r"data\layers_config.json") # GUI_FEATURE: when GUI implemented there maybe an import button to get layers from another project, for now i will hard code the path. # NOTE: must run the script from the main project folder "not src".
 beams_data = load_json(r"data\beams_data.json") #GUI_FEATURE: as above
 columns_data = load_json(r"data\columns_data.json") #GUI_FEATURE: as above
+color_map = load_json(r"data\color_map.json") #GUI_FEATURE: as above
 

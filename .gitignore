@@ -2,3 +2,4 @@ __pycache__
 venv
 *.bak 
 git_command.txt
+help
