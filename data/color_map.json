@@ -1,0 +1,10 @@
+{
+    "COLOR_MAP":{
+        "red": 1,
+        "yellow": 2,
+        "green": 3,
+        "blue": 5,
+        "white": 7
+    }
+    
+}

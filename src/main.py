@@ -13,11 +13,11 @@ def main():
     acad = Autocad(create_if_not_exists=True)
     
     # Layer Manager
-    setup_layers(acad, layers_config)
+    setup_layers(layers_config)
     
     # Beams Manager
-    draw_beam_outline(acad, beams_data,layer_name="beam_outline")
-    draw_rebar(acad, beams_data, layer_name="beam_bottom_rebar")
+    draw_beam_outline(beams_data,layer_name="0")
+    draw_rebar(beams_data, layer_name="0")
     
     
     
