@@ -25,7 +25,7 @@ def draw_beam_outline(acad, beam_data, layer_name, origin=APoint(0, 0)):
             pline.Layer = layer_name
             origin.x += width + 10  # shift next beam outline to the right
 
-def draw_rebar(acad, beam_data, layer_name, start_origin=APoint(0, 0)):
+def draw_beam_rebar(acad, beam_data, layer_name, start_origin=APoint(0, 0)):
     current_x = start_origin.x
     current_y = start_origin.y
 
