@@ -1,6 +1,5 @@
 import pythoncom
 import win32com.client
-from files_handler import color_map
 
 
 class AutoCADController:
