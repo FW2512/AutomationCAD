@@ -2,9 +2,9 @@
     "C1":{
         "floor1": {
             "dimensions":{
-                "width_x": 40,
-                "height_y": 25,
-                "cover": 5
+                "width_x": 400,
+                "height_y": 250,
+                "clear_cover": 25
             },
             "rebars":{
                 "x_dir": 4,
