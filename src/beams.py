@@ -3,6 +3,8 @@ from autocad_controller import AutoCADController
 acadModel = AutoCADController()
 
 def draw_beam_outline(beam_data, layer_name, origin=(0, 0)):
+    
+    # Draw outline
     for beam_name in beam_data:
         for span in beam_data[beam_name]:
             if span == "spans":
@@ -10,6 +12,7 @@ def draw_beam_outline(beam_data, layer_name, origin=(0, 0)):
             dims = beam_data[beam_name][span]["dimensions"]
             width = dims["width_x"]
             height = dims["height_y"]
+            cover = dims["cover"]
             
             points = [
                 origin[0], origin[1],
@@ -22,20 +25,24 @@ def draw_beam_outline(beam_data, layer_name, origin=(0, 0)):
             pline = acadModel.add_lightweight_polyline(points, layer_name)
             pline.Closed = True
             
-def draw_rebar(beam_data, layer_name):
-    for beam_name in beam_data:
-        for span in beam_data[beam_name]:
-            if span == "spans":
-                continue
-            rebar: str = beam_data[beam_name][span]["rebars"]["bottom"]
-            rebar_number = int(rebar.split("T")[0]) # FIXME: no hard coded things use regex
-            rebar_dia = float(rebar.split("T")[1])/10 # FIXME: no hard coded things use regex
-            
+            # Draw rebars
+            rebar_dia = beam_data[beam_name][span]["rebars"]["bottom"]["rebar_dia"]
+            rebar_num = beam_data[beam_name][span]["rebars"]["bottom"]["x_dir"]
             radius = rebar_dia/2
-            circle = acadModel.add_circle((0.0, 0.0, 0.0), radius, layer_name)
+
+            rebar_coord_x = origin[0] + cover + radius
+            rebar_coord_y = origin[1] + cover + radius
+            rebar_spacing = (width - 2 * (radius + cover)) / (rebar_num - 1)
+            for i in range(rebar_num):
+                circle = acadModel.add_circle((rebar_coord_x, rebar_coord_y), radius, layer_name)    
+                hatch = acadModel.add_hatch()
+                acadModel.append_outer_loop(circle, hatch)
+                hatch.Evaluate()
+                rebar_coord_x += rebar_spacing
             
-            hatch = acadModel.add_hatch()
-            acadModel.add_outer_loop(circle, hatch)
-            hatch.Evaluate()
+            
+            
+            
+            
             
             
