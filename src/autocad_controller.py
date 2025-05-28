@@ -92,18 +92,24 @@ class AutoCADController:
 
         Parameters:
             objects (object or list of objects): A single COM object or a list/tuple of 
-            COM objects (e.g., AutoCAD entities) to be wrapped.
+                COM objects (e.g., AutoCAD entities like lines, circles, or other entities) 
+                to be wrapped.
 
         Returns:
             win32com.client.VARIANT: A VARIANT containing a VT_ARRAY of VT_DISPATCH 
-            objects, suitable for passing to AutoCAD COM methods like Group.AppendItems().
+                objects, suitable for passing to AutoCAD COM methods that require this 
+                specific format, such as `Group.AppendItems()` or `Hatch.AppendOuterLoop()`.
 
         Notes:
-            - This is required because some AutoCAD COM methods do not accept native 
-            Python lists directly and require a specific VARIANT array format.
-            - If a single object is passed, it will still be wrapped as a one-element array.
+            - AutoCAD COM methods typically do not accept native Python lists or tuples 
+            directly; this method wraps the provided objects into a VARIANT array 
+            with the correct type for AutoCAD.
+            - If a single object is provided, it will be wrapped as a one-element array 
+            (i.e., still in tuple form).
+            - This is primarily used for methods like `AppendOuterLoop()`, `AppendInnerLoop()`, 
+            or other AutoCAD API calls that expect arrays of dispatch objects.
         """
-        if not isinstance(objects, (list, tuple)):
+        if not isinstance(objects, (list, tuple)):  
             objects = [objects]
         return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, tuple(objects))
 
@@ -233,3 +239,36 @@ class AutoCADController:
             COM Hatch object.
         """
         return self.model_space.AddHatch(pattern_type, pattern_name, associative)
+
+    def append_outer_loop(self, object, hatch_object):
+        """
+        Append an outer boundary loop to a hatch object.
+
+        Parameters:
+            object (object or list of objects): The boundary entity or entities 
+                (e.g., lines, arcs, polylines) that form the outer loop of the hatch.
+            hatch_object (win32com.client.CDispatch): The AutoCAD Hatch object 
+                to which the outer loop will be appended.
+
+        Note:
+            This typically defines the main closed region that will be filled by the hatch.
+            The input object(s) must already exist in the drawing and form a closed loop.
+        """
+        hatch_object.AppendOuterLoop(self.variants(object))
+
+    def append_inner_loop(self, object, hatch_object):
+        """
+        Append an inner boundary loop (a hole or exclusion) to a hatch object.
+
+        Parameters:
+            object (object or list of objects): The boundary entity or entities 
+                (e.g., lines, arcs, polylines) that form the inner loop.
+            hatch_object (win32com.client.CDispatch): The AutoCAD Hatch object 
+                to which the inner loop will be appended.
+
+        Note:
+            Inner loops define areas within the hatch boundary that will remain unhatched.
+            Useful for creating islands or holes inside a hatched region.
+        """
+        hatch_object.AppendinnerLoop(self.variants(object))
+        

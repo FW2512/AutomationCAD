@@ -34,4 +34,8 @@ def draw_rebar(beam_data, layer_name):
             radius = rebar_dia/2
             circle = acadModel.add_circle((0.0, 0.0, 0.0), radius, layer_name)
             
+            hatch = acadModel.add_hatch()
+            acadModel.add_outer_loop(circle, hatch)
+            hatch.Evaluate()
+            
             
