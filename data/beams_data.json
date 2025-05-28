@@ -1,41 +1,34 @@
 {
-    "B1":{
-        "spans":{
+    "B1": {
+        "spans": {
             "parallel_to": "X_AXIS",
             "columns": ["C1", "C2", "C3"]
         },
         "span1": {
-            "dimensions":{
+            "dimensions": {
                 "span_length": 400,
                 "width_x": 30,
                 "height_y": 60,
                 "cover": 5
             },
-        "rebars":{
-                "top": "2T12",
-                "bottom": "2T16"
+            "rebars": {
+                "top": {
+                    "x_dir": 2,
+                    "rebar_type": "T",
+                    "rebar_dia": 12
+                },
+                "bottom": {
+                    "x_dir": 2,
+                    "rebar_type": "T",
+                    "rebar_dia": 12
+                }
             },
-        "stirrups":{
-                "left": "T8@150",
-                "middle": "T8@150",
-                "right": "T8@150"
-            }
-        },
-        "span2": {
-            "dimensions":{
-                "span_length": 400,
-                "width_x": 40,
-                "height_y": 40,
-                "cover": 5
-            },
-        "rebars":{
-                "top": "2T12",
-                "bottom": "2T16"
-            },
-        "stirrups":{
-                "left": "T8@150",
-                "middle": "T8@150",
-                "right": "T8@150"
+            "stirrups": {
+                "dia": 8,
+                "stirrups_type": "T",
+                "lift_spc": 150,
+                "middle_spc": 150,
+                "right_spc": 150
             }
         }
     }
