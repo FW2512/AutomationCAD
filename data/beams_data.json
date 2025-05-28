@@ -6,10 +6,10 @@
         },
         "span1": {
             "dimensions": {
-                "span_length": 400,
-                "width_x": 30,
-                "height_y": 60,
-                "cover": 5
+                "span_length": 4000,
+                "width_x": 300,
+                "height_y": 600,
+                "cover": 25
             },
             "rebars": {
                 "top": {
