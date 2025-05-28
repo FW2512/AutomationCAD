@@ -167,7 +167,7 @@ class AutoCADController:
         linetype = self.doc.Linetypes
         return [lt.name for lt in linetype]
 
-    def add_line(self, start, end, layer=None):
+    def add_line(self, start: tuple[int | float | int, float], end: tuple[int | float | int, float], layer=None):
         """
         Draw a line in model space.
 
@@ -184,7 +184,7 @@ class AutoCADController:
             line.Layer = layer
         return line
 
-    def add_circle(self, center, radius, layer=None):
+    def add_circle(self, center: tuple[int | float | int, float], radius: float, layer=None):
         """
         Draw a circle in model space.
 
@@ -196,17 +196,17 @@ class AutoCADController:
         Returns:
             COM Circle object.
         """
-        circle = self.model_space.AddCircle(self.APoint(center[0], center[1], center[2]), radius)
+        circle = self.model_space.AddCircle(self.APoint(center), radius)
         if layer:
             circle.Layer = layer
         return circle
 
-    def add_lightweight_polyline(self, coords, layer=None):
+    def add_lightweight_polyline(self, coords: list[float] | tuple[float], layer=None):
         """
         Draw a lightweight polyline using coordinate list.
 
         Args:
-            coords (list): List of [x1, y1, x2, y2, ..., xn, yn] coordinates.
+            coords (list | tuble): List or tuble of (x1, y1, x2, y2, ..., xn, yn) coordinates.
             layer (str): Layer name to assign.
 
         Returns:
