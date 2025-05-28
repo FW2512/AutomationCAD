@@ -7,67 +7,18 @@
                 "cover": 5
             },
             "rebars":{
-                "corners": ["T20"],
-                "middle": ["T20"]
+                "x_dir": 4,
+                "y_dir": 4,
+                "rebar_type": "T",
+                "corners_dia": 20,
+                "middle_dia": 20
             },
             "stirrups":{
-                "bottom": ["T8@150"],
-                "middle": ["T8@150"],
-                "top": ["T8@150"]
-            }
-        }
-    },
-    "C2":{
-        "floor1": {
-            "dimensions":{
-                "width_x": 40,
-                "height_y": 25,
-                "cover": 5
-            },
-            "rebars":{
-                "corners": ["T20"],
-                "middle": ["T20"]
-            },
-            "stirrups":{
-                "bottom": ["T8@150"],
-                "middle": ["T8@150"],
-                "top": ["T8@150"]
-            }
-        }
-    },
-    "C3":{
-        "floor1": {
-            "dimensions":{
-                "width_x": 40,
-                "height_y": 25,
-                "cover": 5
-            },
-            "rebars":{
-                "corners": ["T20"],
-                "middle": ["T20"]
-            },
-            "stirrups":{
-                "bottom": ["T8@150"],
-                "middle": ["T8@150"],
-                "top": ["T8@150"]
-            }
-        }
-    },
-    "C4":{
-        "floor1": {
-            "dimensions":{
-                "width_x": 40,
-                "height_y": 25,
-                "cover": 5
-            },
-            "rebars":{
-                "corners": ["T20"],
-                "middle": ["T20"]
-            },
-            "stirrups":{
-                "bottom": ["T8@150"],
-                "middle": ["T8@150"],
-                "top": ["T8@150"]
+                "dia": 8,
+                "stirrups_type": "T",
+                "top_spc": 150,
+                "middle_spc": 150,
+                "bottom_spc": 150
             }
         }
     }
