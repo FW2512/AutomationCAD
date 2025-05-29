@@ -95,3 +95,48 @@ git config --global user.email "your@email.com"
 git config user.name "Your Name"
 git config user.email "your@email.com"
 ```
+
+---
+
+# Keeping Empty Folders in Git
+
+Git does not track empty folders by default. If your project requires a folder to exist (e.g., `logs/` for log files), you can use a `.gitkeep` file to force Git to track it.
+
+### ✅ Steps to Keep an Empty Folder Tracked:
+
+1. Create the folder:
+   ```bash
+   mkdir logs
+   ```
+
+2. Add a `.gitkeep` file:
+   ```bash
+   touch logs/.gitkeep
+   ```
+
+3. Commit the `.gitkeep` file:
+   ```bash
+   git add logs/.gitkeep
+   git commit -m "chore: keep logs folder in repo"
+   ```
+
+4. (Optional) Add a `.gitignore` in the folder to ignore runtime files like logs:
+   ```
+   # logs/.gitignore
+   *
+   !.gitkeep
+   !.gitignore
+   ```
+
+### 📌 Why Not Just Use `*.log` in Root .gitignore?
+
+Using `*.log` in your root `.gitignore` will ignore all `.log` files in the project — not just in `logs/`. To scope it better:
+```gitignore
+logs/*.log
+!logs/.gitkeep
+```
+
+This way, you:
+- ✅ Ignore only logs in the `logs/` folder
+- ✅ Preserve `.gitkeep` so the folder stays in Git
+- ✅ Avoid tracking generated logs, keeping your repo clean
