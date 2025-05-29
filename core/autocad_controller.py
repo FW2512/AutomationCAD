@@ -1,5 +1,7 @@
 import pythoncom
 import win32com.client
+from utils.messenger import Messenger
+from utils.handlers import ConsoleHandler, LogFileHandler
 
 
 class AutoCADController:
@@ -25,6 +27,10 @@ class AutoCADController:
         self.acad.Visible = True
         self.doc = self.acad.ActiveDocument
         self.model_space = self.doc.ModelSpace
+        
+        # Register message handlers
+        Messenger.register_handler(ConsoleHandler())
+        Messenger.register_handler(LogFileHandler())
         
     def APoint(self, *args):
         """
@@ -129,10 +135,10 @@ class AutoCADController:
         layers = self.doc.Layers
         try:
             layer = layers.Item(name)
-            print(f"Layer {name} already exist!") # GUI_MSG
+            Messenger.info(f"Layer {name} already exist!")
         except Exception:
             layer = layers.Add(name)
-            print(f"Layer {name} created.") # GUI_MSG
+            Messenger.info(f"Layer {name} created.")
 
             layer.Color = color
         
