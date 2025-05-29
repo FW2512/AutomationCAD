@@ -25,6 +25,8 @@
             },
             "stirrups": {
                 "dia": 8,
+                "x_dir": 2,
+                "y_dir": 2,
                 "stirrups_type": "T",
                 "lift_spc": 150,
                 "middle_spc": 150,
