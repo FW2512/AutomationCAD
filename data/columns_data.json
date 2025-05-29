@@ -1,20 +1,22 @@
 {
-    "C1":{
+    "C1": {
         "floor1": {
-            "dimensions":{
+            "dimensions": {
                 "width_x": 400,
                 "height_y": 250,
                 "clear_cover": 25
             },
-            "rebars":{
+            "rebars": {
                 "x_dir": 4,
                 "y_dir": 4,
                 "rebar_type": "T",
                 "corners_dia": 20,
                 "middle_dia": 20
             },
-            "stirrups":{
+            "stirrups": {
                 "dia": 8,
+                "x_dir": 2,
+                "y_dir": 2,
                 "stirrups_type": "T",
                 "top_spc": 150,
                 "middle_spc": 150,
