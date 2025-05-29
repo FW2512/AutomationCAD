@@ -13,14 +13,28 @@
             },
             "rebars": {
                 "top": {
-                    "x_dir": 2,
-                    "rebar_type": "T",
-                    "rebar_dia": 12
+                    "layer_1": {
+                        "x_dir": 3,
+                        "rebar_type": "T",
+                        "rebar_dia": 12
+                    },
+                    "layer_2": {
+                        "x_dir": 2,
+                        "rebar_type": "T",
+                        "rebar_dia": 12
+                    }
                 },
                 "bottom": {
-                    "x_dir": 2,
-                    "rebar_type": "T",
-                    "rebar_dia": 12
+                     "layer_1": {
+                        "x_dir": 3,
+                        "rebar_type": "T",
+                        "rebar_dia": 12
+                    },
+                    "layer_2": {
+                        "x_dir": 2,
+                        "rebar_type": "T",
+                        "rebar_dia": 12
+                    }
                 }
             },
             "stirrups": {
