@@ -1,26 +1,40 @@
 class Messenger:
     """
-    Messenger interface for routing messages.
-    Can later be extended to connect with PyQt5 or other GUI frameworks.
+    Central dispatcher for application messages.
+    Routes messages to all registered handlers.
     """
-
-    _instance = None
+    _handlers = []
 
     @classmethod
-    def set_handler(cls, handler):
-        cls._instance = handler
+    def register_handler(cls, handler):
+        """
+        Register a new message handler.
+        :param handler: An object with a 'handle_message' method.
+        """
+        cls._handlers.append(handler)
 
     @classmethod
-    def send(cls, msg: str, level: str = "info"):
-        if cls._instance:
-            cls._instance.handle_message(msg, level)
-        else:
-            print(f"[{level.upper()}] {msg}")
+    def info(cls, message: str):
+        """
+        Dispatch an informational message to all handlers.
+        :param message: The message string.
+        """
+        cls._dispatch(message, level="info")
 
+    @classmethod
+    def error(cls, message: str):
+        """
+        Dispatch an error message to all handlers.
+        :param message: The message string.
+        """
+        cls._dispatch(message, level="error")
 
-class ConsoleMessenger:
-    """
-    Default fallback messenger to console.
-    """
-    def handle_message(self, msg: str, level: str):
-        print(f"[{level.upper()}] {msg}")
+    @classmethod
+    def _dispatch(cls, message: str, level: str):
+        """
+        Internal method to send a message to all handlers.
+        :param message: The message string.
+        :param level: The level of the message ('info', 'error', etc.).
+        """
+        for handler in cls._handlers:
+            handler.handle_message(message, level)
