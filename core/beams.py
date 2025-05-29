@@ -1,4 +1,4 @@
-from autocad_controller import AutoCADController
+from core.autocad_controller import AutoCADController
 
 acadModel = AutoCADController()
 

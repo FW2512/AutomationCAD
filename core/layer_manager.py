@@ -1,5 +1,5 @@
-from autocad_controller import AutoCADController
-from files_handler import color_map
+from core.autocad_controller import AutoCADController
+from utils.files_handler import color_map
 
 acadModel = AutoCADController()
 

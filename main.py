@@ -1,6 +1,6 @@
-from files_handler import layers_config, beams_data, columns_data
-from layer_manager import setup_layers
-from beams import draw_beam_outline
+from utils.files_handler import layers_config, beams_data, columns_data
+from core.layer_manager import setup_layers
+from core.beams import draw_beam_outline
 
 def main():
     """The main runner function
