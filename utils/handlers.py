@@ -1,5 +1,5 @@
+import os
 import logging
-from datetime import datetime
 
 class ConsoleHandler:
     def handle_message(self, message: str, level: str):
@@ -8,8 +8,12 @@ class ConsoleHandler:
 
 class LogFileHandler:
     def __init__(self, log_file="logs/app.log"):
+        
+        self.log_file = log_file
+        
+        os.makedirs(os.path.dirname(self.log_file), exist_ok=True)
         logging.basicConfig(
-            filename=log_file,
+            filename=self.log_file,
             level=logging.DEBUG,
             format='%(asctime)s - %(levelname)s - %(message)s',
             filemode='a'

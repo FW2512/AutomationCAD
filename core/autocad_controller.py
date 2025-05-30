@@ -2,9 +2,9 @@ import pythoncom
 import win32com.client
 from utils.messenger import Messenger
 from utils.handlers import ConsoleHandler, LogFileHandler
+import pywintypes
 
-
-class AutoCADController:
+class AutoCADController():
     """
     A class to manage the AutoCAD COM interface using pythoncom and win32com.
 
@@ -14,23 +14,33 @@ class AutoCADController:
     - Add layers, lines, circles, polylines, and hatches
     """
 
-    def __init__(self):
+    def __init__(self, caller_module_name: str):
         """
         Initialize the COM connection with AutoCAD and get the active document and model space.
         """
-        pythoncom.CoInitialize()
-        try:
-            self.acad = win32com.client.GetActiveObject("AutoCAD.Application")
-        except Exception:
-            self.acad = win32com.client.Dispatch("AutoCAD.Application")
 
-        self.acad.Visible = True
-        self.doc = self.acad.ActiveDocument
-        self.model_space = self.doc.ModelSpace
-        
         # Register message handlers
         Messenger.register_handler(ConsoleHandler())
         Messenger.register_handler(LogFileHandler())
+        
+        pythoncom.CoInitialize()
+        
+        try:
+            self.acad = win32com.client.GetActiveObject("AutoCAD.Application")
+            self.acad.Visible = True
+            self.doc = self.acad.ActiveDocument
+            self.model_space = self.doc.ModelSpace
+        
+        except pywintypes.com_error as e:
+            if len(e.args) >= 3 and isinstance(e.args[2], tuple) and len(e.args[2]) >= 3:
+                Messenger.error(f"{caller_module_name} {e.args[0]} {e.args[1]} {e.args[2][2]}")
+            else:
+                Messenger.error(f"{caller_module_name} {e.args[0]} {e.args[1]}")
+            self.acad = None
+            
+        except Exception as e:
+            Messenger.error({e})
+
         
     def APoint(self, *args):
         """
