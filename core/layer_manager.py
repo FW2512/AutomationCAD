@@ -1,7 +1,7 @@
 from core.autocad_controller import AutoCADController
 from utils.json_loader import color_map
 
-acadModel = AutoCADController()
+acadModel = AutoCADController(__name__)
 
 def setup_layers(layers_data: dict) -> None:
     """Create the layers and assign name, color and linetype for each
@@ -9,6 +9,9 @@ def setup_layers(layers_data: dict) -> None:
     Args:
         layers_data (dict): Layers data as dictionary loaded from JSON file or database
     """
+    
+    if acadModel.acad == None:
+        return
     
     for name, props in layers_data.items():
         
