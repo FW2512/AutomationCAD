@@ -1,8 +1,11 @@
 from core.autocad_controller import AutoCADController
 
-acadModel = AutoCADController()
+acadModel = AutoCADController(__name__)
 
 def draw_beam_outline(beam_data, layer_name, origin=(0, 0)):
+    
+    if acadModel.acad == None:
+        return
     
     # Draw outline
     for beam_name in beam_data:
